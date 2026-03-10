@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferrinex - Iron Tools Supplier</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* Feedback form styling */
+.feedback-container{
+background:white;
+padding:20px;
+width:90%;
+max-width:400px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+margin:40px auto;
+}
+
+.feedback-container h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.feedback-container input,
+.feedback-container textarea{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+.feedback-container button{
+width:100%;
+padding:12px;
+border:none;
+background:#4a90e2;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#message{
+text-align:center;
+font-weight:bold;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Ferrinex</h1>
+<h3>Premium Iron Tools Manufacturer & Supplier</h3>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="about.html">About Us</a>
+<a href="#">Contact</a>
+</nav>
+
+<section>
+<h2>Welcome to Ferrinex</h2>
+<p>Ferrinex is a trusted company providing strong and durable iron tools for construction, industrial work, and home improvement.</p>
+</section>
+
+<section>
+<h2>Our Iron Tools</h2>
+
+<div class="products">
+
+<div class="product-card">
+<h3>Iron Hammer</h3>
+<p>High quality hammer made with strong forged iron.</p>
+</div>
+
+<div class="product-card">
+<h3>Iron Wrench</h3>
+<p>Heavy duty wrench for mechanical and repair work.</p>
+</div>
+
+<div class="product-card">
+<h3>Iron Spanner</h3>
+<p>Durable iron spanner designed for long life.</p>
+</div>
+
+<div class="product-card">
+<h3>Iron Cutter</h3>
+<p>Strong cutting tool for industrial usage.</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- FEEDBACK SECTION -->
+<section>
+
+<div class="feedback-container">
+
+<h2>Submit Your Feedback</h2>
+
+<form id="feedbackForm">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<textarea id="feedback" placeholder="Your Feedback" required></textarea>
+
+<button type="submit">Submit Feedback</button>
+
+</form>
+
+<p id="message" style="display:none;"></p>
+
+</div>
+
+</section>
+
+
+<section>
+<h2>Contact Ferrinex</h2>
+<p>Email: contact@ferrinex.com</p>
+<p>Phone: +91 7063505132</p>
+</section>
+
+<footer>
+<p>© 2026 Ferrinex. All Rights Reserved.</p>
+</footer>
+
+
+<!-- FIREBASE SCRIPT -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBnbF6pCPI-JZjtXJ3w46Tmxe5HmiRxhKk",
+authDomain: "ferrinex-7ee5e.firebaseapp.com",
+projectId: "ferrinex-7ee5e",
+storageBucket: "ferrinex-7ee5e.firebasestorage.app",
+messagingSenderId: "129492497132",
+appId: "1:129492497132:web:4a49ca4e5b54b80cbc2bc9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const form = document.getElementById("feedbackForm");
+const message = document.getElementById("message");
+
+const forbiddenWords = ["fuck","fucking","shit","bitch","damn"];
+
+form.addEventListener("submit", async (e)=>{
+
+e.preventDefault();
+
+const name=document.getElementById("name").value.trim();
+const feedback=document.getElementById("feedback").value.trim();
+
+if(!name||!feedback){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Please fill all fields.";
+
+return;
+}
+
+const lowerFeedback=feedback.toLowerCase();
+const foundWord=forbiddenWords.find(word=>lowerFeedback.includes(word));
+
+if(foundWord){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Please avoid using inappropriate words.";
+
+return;
+}
+
+try{
+
+await addDoc(collection(db,"feedback"),{
+
+name:name,
+feedback:feedback,
+created:new Date()
+
+});
+
+message.style.display="block";
+message.style.color="green";
+message.innerText="Thank you for your feedback!";
+
+form.reset();
+
+}
+
+catch(error){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Insert failed: "+error.message;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
