@@ -44,6 +44,88 @@ section{
     box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Feedback form */
+
+.feedback-container{
+background:white;
+padding:20px;
+width:90%;
+max-width:400px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+margin:40px auto;
+}
+
+.feedback-container input,
+.feedback-container textarea{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+.feedback-container button{
+width:100%;
+padding:12px;
+border:none;
+background:#4a90e2;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#message{
+text-align:center;
+font-weight:bold;
+margin-top:10px;
+}
+
+
+/* Feedback table */
+
+.table-container{
+width:90%;
+max-width:800px;
+margin:40px auto;
+}
+
+.table-header{
+width:100%;
+border-collapse:collapse;
+}
+
+.table-header th{
+border:1px solid #ccc;
+padding:8px;
+background:#f2f2f2;
+text-align:left;
+}
+
+.table-body{
+max-height:350px;
+overflow-y:auto;
+}
+
+.table-body table{
+width:100%;
+border-collapse:collapse;
+}
+
+.table-body td{
+border:1px solid #ccc;
+padding:8px;
+}
+
+.table-body::-webkit-scrollbar{
+width:6px;
+}
+
+.table-body::-webkit-scrollbar-thumb{
+background:#ccc;
+border-radius:10px;
+}
+
 footer{
     background:#333;
     color:white;
