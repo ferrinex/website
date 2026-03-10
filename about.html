@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,102 +10,15 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<style>
-
-/* Feedback form */
-.feedback-container{
-background:white;
-padding:20px;
-width:90%;
-max-width:400px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-margin:40px auto;
-}
-
-.feedback-container input,
-.feedback-container textarea{
-width:100%;
-padding:10px;
-margin-bottom:15px;
-border:1px solid #ddd;
-border-radius:6px;
-}
-
-.feedback-container button{
-width:100%;
-padding:12px;
-border:none;
-background:#4a90e2;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-#message{
-text-align:center;
-font-weight:bold;
-margin-top:10px;
-}
-
-
-/* Feedback table */
-
-.table-container{
-width:90%;
-max-width:800px;
-margin:40px auto;
-}
-
-.table-header{
-width:100%;
-border-collapse:collapse;
-}
-
-.table-header th{
-border:1px solid #ccc;
-padding:8px;
-background:#f2f2f2;
-text-align:left;
-}
-
-.table-body{
-max-height:350px;
-overflow-y:auto;
-}
-
-.table-body table{
-width:100%;
-border-collapse:collapse;
-}
-
-.table-body td{
-border:1px solid #ccc;
-padding:8px;
-}
-
-.table-body::-webkit-scrollbar{
-width:6px;
-}
-
-.table-body::-webkit-scrollbar-thumb{
-background:#ccc;
-border-radius:10px;
-}
-
-</style>
-
 </head>
 
 
 <body>
 
-
 <header>
 <h1>Ferrinex</h1>
 <h3>Premium Iron Tools Manufacturer & Supplier</h3>
 </header>
-
 
 <nav>
 <a href="index.html">Home</a>
@@ -209,7 +123,6 @@ Ferrinex is a trusted company providing strong and durable iron tools for constr
 </section>
 
 
-
 <section>
 
 <h2>Contact Ferrinex</h2>
@@ -225,168 +138,7 @@ Ferrinex is a trusted company providing strong and durable iron tools for constr
 </footer>
 
 
-
-<!-- FIREBASE SCRIPT -->
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-
-import { getFirestore, collection, addDoc, getDocs, query, orderBy }
-
-from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyBnbF6pCPI-JZjtXJ3w46Tmxe5HmiRxhKk",
-authDomain: "ferrinex-7ee5e.firebaseapp.com",
-projectId: "ferrinex-7ee5e",
-storageBucket: "ferrinex-7ee5e.firebasestorage.app",
-messagingSenderId: "129492497132",
-appId: "1:129492497132:web:4a49ca4e5b54b80cbc2bc9"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-
-const form=document.getElementById("feedbackForm");
-
-const message=document.getElementById("message");
-
-
-const forbiddenWords=["fuck","fucking","shit","bitch","damn"];
-
-
-
-form.addEventListener("submit", async(e)=>{
-
-e.preventDefault();
-
-const name=document.getElementById("name").value.trim();
-
-const feedback=document.getElementById("feedback").value.trim();
-
-
-if(!name||!feedback){
-
-message.style.display="block";
-message.style.color="red";
-message.innerText="Please fill all fields.";
-
-return;
-
-}
-
-
-const lowerFeedback=feedback.toLowerCase();
-
-const foundWord=forbiddenWords.find(word=>lowerFeedback.includes(word));
-
-
-if(foundWord){
-
-message.style.display="block";
-message.style.color="red";
-message.innerText="Please avoid using inappropriate words.";
-
-return;
-
-}
-
-
-try{
-
-await addDoc(collection(db,"feedback"),{
-
-name:name,
-feedback:feedback,
-created:new Date()
-
-});
-
-
-message.style.display="block";
-
-message.style.color="green";
-
-message.innerText="Thank you for your feedback!";
-
-
-form.reset();
-
-
-loadFeedback();   // refresh table
-
-
-}
-
-
-catch(error){
-
-message.style.display="block";
-
-message.style.color="red";
-
-message.innerText="Insert failed: "+error.message;
-
-}
-
-});
-
-
-
-async function loadFeedback(){
-
-const feedbackRef=collection(db,"feedback");
-
-const q=query(feedbackRef,orderBy("created","desc"));
-
-const querySnapshot=await getDocs(q);
-
-let html="";
-
-let index=0;
-
-
-querySnapshot.forEach((doc)=>{
-
-const row=doc.data();
-
-const bgColor=index%2===0?"#f9f9f9":"#ffffff";
-
-
-html+=`
-
-<tr style="background:${bgColor}">
-
-<td width="30%"><b>${row.name}</b></td>
-
-<td>${row.feedback}</td>
-
-</tr>
-
-`;
-
-index++;
-
-});
-
-
-document.getElementById("feedbackList").innerHTML=html;
-
-}
-
-
-loadFeedback();
-
-
-</script>
-
+<script type="module" src="js/script.js"></script>
 
 </body>
 </html>
