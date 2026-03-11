@@ -74,15 +74,27 @@ Sunday: Closed
 
 <h2>Send Us a Message</h2>
 
-<form>
+<form action="https://formsubmit.co/contact@ferrinex.com" method="POST">
 
-<input type="text" placeholder="Your Name" required>
+<input type="text" name="name" placeholder="Your Name" required>
 
-<input type="email" placeholder="Your Email" required>
+<input type="email" name="email" placeholder="Your Email" required>
 
-<textarea placeholder="Your Message" required></textarea>
+<textarea name="message" placeholder="Your Message" required></textarea>
 
 <button type="submit">Send Message</button>
+
+<!-- Email Subject -->
+<input type="hidden" name="_subject" value="Ferrinex Contact Form">
+
+<!-- Redirect after submit -->
+<input type="hidden" name="_next" value="https://ferrinex.github.io/website/index.html">
+
+<!-- Disable captcha -->
+<input type="hidden" name="_captcha" value="false">
+
+<!-- Anti-spam -->
+<input type="text" name="_honey" style="display:none">
 
 </form>
 
