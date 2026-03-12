@@ -43,6 +43,49 @@ section{
     text-align:center;
 }
 
+/* SECTION DESIGN */
+
+.content-section{
+    max-width:1000px;
+    margin:40px auto;
+    padding:40px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-section:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* SECTION TITLES */
+
+.content-section h2{
+    border-left:6px solid #ff9800;
+    padding-left:12px;
+    margin-bottom:20px;
+    color:#222;
+}
+
+/* TEXT */
+
+.content-section p{
+    line-height:1.7;
+    color:#444;
+}
+
+/* LIST */
+
+.content-section ul{
+    padding-left:20px;
+}
+
+.content-section li{
+    margin-bottom:10px;
+}
+
 /* product page style */
 .products{
     display:flex;
