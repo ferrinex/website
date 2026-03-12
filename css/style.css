@@ -67,6 +67,7 @@ section{
     padding-left:12px;
     margin-bottom:20px;
     color:#222;
+    text-align: center;
 }
 
 /* TEXT */
@@ -74,16 +75,19 @@ section{
 .content-section p{
     line-height:1.7;
     color:#444;
+    text-align: left;
 }
 
 /* LIST */
 
 .content-section ul{
     padding-left:20px;
+    text-align: left;
 }
 
 .content-section li{
     margin-bottom:10px;
+    text-align: left;
 }
 
 /* product page style */
