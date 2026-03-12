@@ -15,22 +15,14 @@ header{
     position: relative;
 }
 
-/* Dark overlay so text stays readable */
-
-header::before{
-    content: "";
-    position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.6);
+header h1{
+font-size:48px;
+margin-bottom:10px;
 }
 
-header h1,
 header h3{
-    position: relative;
-    z-index: 1;
+font-size:22px;
+font-weight:normal;
 }
 
 nav{
