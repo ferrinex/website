@@ -29,7 +29,7 @@ const db = getFirestore(app);
 const form = document.getElementById("feedbackForm");
 const message = document.getElementById("message");
 
-const forbiddenWords = ["fuck","fucking","shit","bitch","damn"];
+const forbiddenWords = ["fuck","fucking","shit","bitch","damn",];
 
 
 /* FORM SUBMIT */
@@ -45,6 +45,8 @@ const email=document.getElementById("email").value.trim();
 const product=document.getElementById("product").value;
 const feedback=document.getElementById("feedback").value.trim();
 
+/* FIELD VALIDATION */
+
 if(!name || !email || !product || !feedback){
 
 message.style.display="block";
@@ -54,6 +56,44 @@ return;
 
 }
 
+if(name.length < 2 || name.length >= 50){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Name must be between 2 and 50 characters.";
+return;
+
+}
+
+if(email.length <= 5 || email.length >= 100){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Please enter a valid email address.";
+return;
+
+}
+
+if(product.length < 1 || product.length >= 50){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Please select a valid product.";
+return;
+
+}
+
+if(feedback.length <= 5 || feedback.length >= 500){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Feedback must be between 6 and 500 characters.";
+return;
+
+}
+
+
+/* BAD WORD CHECK */
 const lowerFeedback=feedback.toLowerCase();
 const foundWord=forbiddenWords.find(word=>lowerFeedback.includes(word));
 
