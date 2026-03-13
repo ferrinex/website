@@ -25,17 +25,35 @@ font-size:22px;
 font-weight:normal;
 }
 
+/* Navigation Bar */
+
 nav{
-    background:#555;
-    padding:10px;
-    text-align:center;
+background:#444;
+padding:12px 40px;
+display:flex;
+align-items:right;
+gap:35px;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
 
+/* Menu Links */
+
 nav a{
-    color:white;
-    margin:0 15px;
-    text-decoration:none;
-    font-weight:bold;
+color:white;
+text-decoration:none;
+font-weight:600;
+font-size:16px;
+padding:8px 14px;
+border-radius:4px;
+transition:all 0.3s ease;
+letter-spacing:0.5px;
+}
+
+/* Hover Effect */
+
+nav a:hover{
+background:#ff9800;
+color:white;
 }
 
 section{
