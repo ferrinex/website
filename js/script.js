@@ -41,9 +41,11 @@ form.addEventListener("submit", async (e)=>{
 e.preventDefault();
 
 const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim();
+const product=document.getElementById("product").value;
 const feedback=document.getElementById("feedback").value.trim();
 
-if(!name || !feedback){
+if(!name || !email || !product || !feedback){
 
 message.style.display="block";
 message.style.color="red";
@@ -68,6 +70,8 @@ try{
 
 await addDoc(collection(db,"feedback"),{
 name:name,
+email:email,
+product:product,
 feedback:feedback,
 created:serverTimestamp()
 });
@@ -124,7 +128,9 @@ const bgColor=index%2===0?"#f9f9f9":"#ffffff";
 
 html+=`
 <tr style="background:${bgColor}">
-<td width="30%"><b>${row.name}</b></td>
+<td><b>${row.name}</b></td>
+<td>${row.email}</td>
+<td>${row.product}</td>
 <td>${row.feedback}</td>
 </tr>
 `;
