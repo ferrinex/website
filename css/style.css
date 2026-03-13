@@ -150,6 +150,23 @@ color:white;
 border-radius:6px;
 cursor:pointer;
 }
+/* Iron Product Dropdown */
+.product-field{
+display:flex;
+align-items:center;
+gap:15px;
+margin:15px 0;
+}
+.product-field label{
+font-weight:600;
+min-width:160px;
+}
+.product-field select{
+flex:1;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
 
 #message{
 text-align:center;
