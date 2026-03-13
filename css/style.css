@@ -31,8 +31,8 @@ nav{
 background:#444;
 padding:12px 40px;
 display:flex;
-align-items:left;
-gap:30px;
+justify-content:flex-end;   /* moves menu to right */
+gap:28px;
 box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
 
