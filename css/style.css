@@ -176,50 +176,69 @@ text-align:left;
 }
 /* Feedback form::::::::::::::::::::::::::::::::::::::::: */
 
+/* FORM SECTION */
 .feedback-container{
 background:white;
-padding:20px;
-width:90%;
-max-width:400px;
+padding:40px;
+width:80%;
+max-width:900px;
+margin:auto;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
-margin:40px auto;
 }
 
-.feedback-container input,
-.feedback-container textarea{
-width:100%;
-padding:10px;
-margin-bottom:15px;
-border:1px solid #ddd;
-border-radius:6px;
+/* TITLE */
+.feedback-container h2{
+text-align:center;
+margin-bottom:30px;
 }
 
-.feedback-container button{
-width:100%;
-padding:12px;
-border:none;
-background:#4a90e2;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-/* Iron Product Dropdown */
-.product-field{
+/* FORM ROW */
+.form-row{
 display:flex;
 align-items:center;
-gap:15px;
-margin:15px 0;
+margin-bottom:18px;
 }
-.product-field label{
+
+/* LABEL */
+.form-row label{
+width:180px;
 font-weight:600;
-min-width:160px;
+width:160px;     /* space reserved for label */
+text-align:left; /* ensures label starts from left */
+margin-left:10;
 }
-.product-field select{
+
+/* INPUTS */
+.form-row input,
+.form-row select,
+.form-row textarea{
 flex:1;
 padding:10px;
-border-radius:6px;
 border:1px solid #ccc;
+border-radius:6px;
+}
+
+/* TEXTAREA HEIGHT */
+.form-row textarea{
+height:120px;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:14px;
+background:#4a90e2;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+margin-top:15px;
+}
+
+button:hover{
+background:#3578c8;
 }
 
 #message{
