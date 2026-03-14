@@ -30,7 +30,7 @@ font-weight:normal;
 background:#f4f4f4;
 padding:15px;
 display:flex;
-justify-content:center;
+justify-content:flex-start;   /* changed from center to left */
 gap:20px;
 border-bottom:1px solid #ddd;
 }
