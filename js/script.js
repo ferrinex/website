@@ -73,6 +73,17 @@ message.innerText="Please enter a valid email address.";
 return;
 
 }
+  
+/* BLOCK COMPANY EMAIL DOMAIN */
+
+if(email.endsWith("@ferrinex.com")){
+
+message.style.display="block";
+message.style.color="red";
+message.innerText="Ferrinex company emails are not allowed for feedback.";
+return;
+
+}
 
 if(product.length < 1 || product.length >= 50){
 
