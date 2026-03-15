@@ -290,6 +290,13 @@ border-bottom:1px solid #ddd;
 word-wrap:break-word;
 }
 
+/* SCROLLABLE TABLE AREA */
+.table-scroll{
+max-height:300px;   /* show scrollbar after certain rows */
+overflow-y:auto;
+overflow-x:hidden;
+}
+
 /* Row borders */
 .feedback-table th,
 .feedback-table td{
