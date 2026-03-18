@@ -135,6 +135,8 @@ section{
 .content-section li{
     margin-bottom:10px;
     text-align: left;
+    line-height:1.7;
+    color:#444;
 }
 
 /* Home and product page style ::::::::::::::::::::::::::::::::::::::*/
