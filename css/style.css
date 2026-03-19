@@ -34,7 +34,8 @@ font-weight:normal;
 /* TOP NAVIGATION BAR :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 .top-nav{
-position:absolute;
+position:fixed;  /* changed from absolute → fixed */
+z-index:1000;    /* ensure it stays above content */
 top:20px;
 right:20px;        /* move navbar to right side */
 background:#f4f4f4;
